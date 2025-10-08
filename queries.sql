@@ -39,7 +39,7 @@ FROM dogs_w_names dwn
 INNER JOIN (
     SELECT dog_id, check_out_day, owner_id
 	FROM check_in
-	WHERE payed <=> 0
+	WHERE paid <=> 0
 ) u
 ON dwn.owner_id = u.owner_id
 GROUP BY dwn.owner_id
