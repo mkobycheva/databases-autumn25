@@ -1,0 +1,60 @@
+CREATE DATABASE IF NOT EXISTS A02;
+USE A02;
+
+SET GLOBAL local_infile = 1;
+
+DROP TABLE IF EXISTS taxi1;
+DROP TABLE IF EXISTS taxi2;
+DROP TABLE IF EXISTS taxi3;
+
+
+CREATE TABLE taxi1 (
+  id INT,
+  VendorID INT,
+  tpep_pickup_datetime DATETIME,
+  tpep_dropoff_datetime DATETIME,
+  passenger_count INT,
+  trip_distance DOUBLE
+  );
+  
+LOAD DATA LOCAL INFILE '/Users/masha/бази даних/taxi1.csv'
+INTO TABLE taxi1
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+SELECT * FROM taxi1;
+
+CREATE TABLE taxi2 (
+  id INT,
+  PULocationID INT,
+  DOLocationID INT,
+  fare_amount DOUBLE,
+  tip_amount DOUBLE
+  );
+  
+LOAD DATA LOCAL INFILE '/Users/masha/бази даних/taxi2.csv'
+INTO TABLE taxi2
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+SELECT * FROM taxi2;
+
+CREATE TABLE taxi3 (
+  id INT,
+  payment_type INT,
+  airport_fee DOUBLE,
+  tolls_amount DOUBLE
+  );
+  
+LOAD DATA LOCAL INFILE '/Users/masha/бази даних/taxi3.csv'
+INTO TABLE taxi3
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+SELECT * FROM taxi3;
